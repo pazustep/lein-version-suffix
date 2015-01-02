@@ -20,8 +20,8 @@ this:
 
 ```clojure
 (defproject my-project "1.2.3"
-  :plugins [[pazustep/lein-version-suffix "0.1.0"]]
-  :dependencies [[pazustep/lein-version-suffix "0.1.0"]])
+  :plugins [[pazustep/lein-version-suffix "0.1.1"]]
+  :dependencies [[pazustep/lein-version-suffix "0.1.1"]])
 ```
 
 
@@ -32,8 +32,8 @@ shows all supported options:
 
 ```clojure
 (defproject my-project "1.2.3"
-  :plugins [[pazustep/lein-version-suffix "0.1.0"]]
-  :dependencies [[pazustep/lein-version-suffix "0.1.0"]]
+  :plugins [[pazustep/lein-version-suffix "0.1.1"]]
+  :dependencies [[pazustep/lein-version-suffix "0.1.1"]]
   :version-suffix {
     :root "src/main/webapp"
     :files [

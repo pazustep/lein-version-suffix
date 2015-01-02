@@ -1,4 +1,4 @@
-(defproject pazustep/lein-version-suffix "0.1.0"
+(defproject pazustep/lein-version-suffix "0.1.1"
   :author "Marcus Brito <marcus@bri.to>"
   :description "Leiningen plugin to add a version suffix to files"
   :url "http://github.com/pazustep/lein-version-suffix"
