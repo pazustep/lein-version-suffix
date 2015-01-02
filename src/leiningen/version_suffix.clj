@@ -71,7 +71,7 @@
       (.toLowerCase (.encodeToString (Base32.) bytes)))))
 
 (defn gzip-file [file]
-  (let [gzip-file (str (.getPath file) ".gz")]
+  (let [gzip-file (File. (str (.getPath file) ".gz"))]
     (with-open [input (FileInputStream. file)
                 output (GZIPOutputStream. (FileOutputStream. gzip-file))]
       (let [buffer (byte-array 8192)
@@ -79,7 +79,8 @@
         (loop [read-count (fill-buffer)]
           (when (pos? read-count)
             (.write output buffer 0 read-count)
-            (recur (fill-buffer))))))))
+            (recur (fill-buffer))))))
+    (.setLastModified gzip-file (.lastModified file))))
 
 (defn rename-file [root gzip? path]
   (let [file (File. root path)
