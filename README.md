@@ -20,8 +20,8 @@ this:
 
 ```clojure
 (defproject my-project "1.2.3"
-  :plugins [[pazustep/lein-version-suffix "0.1.2"]]
-  :dependencies [[pazustep/lein-version-suffix "0.1.2"]])
+  :plugins [[pazustep/lein-version-suffix "0.1.3"]]
+  :dependencies [[pazustep/lein-version-suffix "0.1.3"]])
 ```
 
 
@@ -32,15 +32,18 @@ shows all supported options:
 
 ```clojure
 (defproject my-project "1.2.3"
-  :plugins [[pazustep/lein-version-suffix "0.1.2"]]
-  :dependencies [[pazustep/lein-version-suffix "0.1.2"]]
+  :plugins [[pazustep/lein-version-suffix "0.1.3"]]
+  :dependencies [[pazustep/lein-version-suffix "0.1.3"]]
   :version-suffix {
     :root "src/main/webapp"
     :files [
       "/javascripts/gen/main-prod.js"
       "/stylesheets/main.css"]
-    :output-to "src/main/resources"
-    :gzip true})
+    :gzip true
+    :ignore-missing true
+    :clean true
+    :quiet true
+    :output-to "src/main/resources"})
 ```
 
 `:root` should be the local filesystem path that will be root of your web
@@ -51,6 +54,18 @@ be under `:root`, and should start with a slash. At the moment, no wilcards
 or recursion are supported; you must list each file you need to version.
 
 `:gzip` is optional. If true, versioned files will also get a gzipped version.
+
+`:ignore-missing` is optional. If true, entries in the `:files` array that refer
+to missing files will be ignored. The default if to fail with an error if
+files are missing.
+
+`:clean` is optional. If true, old versioned files will be removed creating the
+new versioned file. Use this with cars; old versions are detected using a
+regular expression as strict as it can be, but it could accidentally match a
+non versioned file.
+
+`:quiet` is optional. If true, messages about file operations are omitted. By
+default, messages are printed for missing, deleted an renamed files.
 
 `:output-to` is also optional, and should be the directory where the
 `assets.edn` file will be written. If omitted, the plugin will use the first
