@@ -102,4 +102,4 @@
   (let [config (:version-suffix project)]
     (when-not (nil? config)
       (validate-config config)
-      (println (version-files project)))))
+      (version-files project))))
